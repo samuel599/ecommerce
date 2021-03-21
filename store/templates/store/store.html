@@ -1,0 +1,28 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block content %}
+  <div class="row">
+      {% for p in product %}
+        <div class="col-lg-4">
+          {% if p.imageURL %}
+            <img class="thumbnail" src="{{ p.imageURL }}">
+          {% else %}
+            <img class="thumbnail" src="{% static 'images/placeholder.png' %}">
+          {% endif %}
+        <div class="box-element product">
+          <strong><h6>{{ p.name }}</h6></strong>
+          <hr>
+          <button data-product="{{ p.id }}" data-action="add" type="button" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+          <a href="#" class="btn btn-outline-success">View</a>
+          <h4 style="display: inline-block;float: right">{{ p.price|floatformat:2 }}</h4>
+
+        </div>
+      </div>
+
+
+      {% endfor %}
+
+
+  </div>
+
+{% endblock %}
